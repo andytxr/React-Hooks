@@ -38,7 +38,7 @@ function calcPairOrOdd(num){
 
     }else{
 
-        return 'Impar'
+        return 'Ímpar'
 
     }
 
@@ -47,17 +47,23 @@ function calcPairOrOdd(num){
 const UseEffect = (props) => {
 
     let [number, setNumber] = useState(1);
-    let [factor, setFactor] = useState(1);
-
-    let [numberB, setNumberB] = useState(1);
-    let [pod, setPod] = useState(1);
 
     useEffect(function(){
 
         setFactor(calcFactor(number));
 
     }, [number]);
+    let [factor, setFactor] = useState(1);
 
+    let [status, setStatus] = useState("Ímpar");
+    useEffect(function(){
+
+        setStatus(number % 2 === 0 ? 'Par' : 'Ímpar')
+
+    })
+
+    let [numberB, setNumberB] = useState(1);
+    let [pod, setPod] = useState(1);
     useEffect(function(){
 
         setPod(calcPairOrOdd(numberB));
@@ -83,6 +89,13 @@ const UseEffect = (props) => {
                 }/>
             </div>
             <SectionTitle title="Exercício #02"></SectionTitle>
+            <div className="center">
+                <div>
+                    <span className="text">Status:</span>
+                    <span className="text red">{status}</span>
+                </div>
+            </div>
+            <SectionTitle title="Exercício #03"></SectionTitle>
             <div className="center">
                 <div>
                     <span className="text">Status: </span>
